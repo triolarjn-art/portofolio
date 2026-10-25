@@ -37,7 +37,7 @@
         <section class="home section" id="home">
             <div class="home__container container grid">
                 <div class="home__data reveal">
-                    <h1 class="home__name">Triol</h1>
+                    <h1 class="home__name">Nama Kamu</h1>
                     <h2 class="home__profession">IT Support & <br> Multimedia</h2>
                     <p class="home__desc">Membangun solusi teknis, merakit sistem, dan merancang visual multimedia yang berdampak.</p>
                     
@@ -61,10 +61,10 @@
             <h2 class="section__title reveal">RECENT WORKS</h2>
             <div class="work__container container grid">
                 <!-- Card 1 -->
-                <article class="work__card reveal">
+                <article class="work__card reveal" data-project="server">
                     <div class="work__header">
                         <h3 class="work__title">Server Maintenance</h3>
-                        <a href="#" class="work__link"><i class="fas fa-arrow-right"></i></a>
+                        <a href="javascript:void(0)" class="work__link"><i class="fas fa-arrow-right"></i></a>
                     </div>
                     <p class="work__desc">Optimasi jaringan lokal dan perawatan *hardware* server perusahaan.</p>
                     <div class="work__img">
@@ -72,10 +72,10 @@
                     </div>
                 </article>
                 <!-- Card 2 -->
-                <article class="work__card reveal">
+                <article class="work__card reveal" data-project="motion">
                     <div class="work__header">
                         <h3 class="work__title">3D Motion Graphic</h3>
-                        <a href="#" class="work__link"><i class="fas fa-arrow-right"></i></a>
+                        <a href="javascript:void(0)" class="work__link"><i class="fas fa-arrow-right"></i></a>
                     </div>
                     <p class="work__desc">Pembuatan aset visual multimedia untuk *company profile*.</p>
                     <div class="work__img">
@@ -83,10 +83,10 @@
                     </div>
                 </article>
                 <!-- Card 3 -->
-                <article class="work__card reveal">
+                <article class="work__card reveal" data-project="network">
                     <div class="work__header">
                         <h3 class="work__title">Network Cabling</h3>
-                        <a href="#" class="work__link"><i class="fas fa-arrow-right"></i></a>
+                        <a href="javascript:void(0)" class="work__link"><i class="fas fa-arrow-right"></i></a>
                     </div>
                     <p class="work__desc">Instalasi kabel UTP dan konfigurasi router untuk kantor cabang.</p>
                     <div class="work__img">
@@ -94,10 +94,10 @@
                     </div>
                 </article>
                 <!-- Card 4 -->
-                <article class="work__card reveal">
+                <article class="work__card reveal" data-project="video">
                     <div class="work__header">
                         <h3 class="work__title">Video Editing</h3>
-                        <a href="#" class="work__link"><i class="fas fa-arrow-right"></i></a>
+                        <a href="javascript:void(0)" class="work__link"><i class="fas fa-arrow-right"></i></a>
                     </div>
                     <p class="work__desc">Produksi video pendek untuk kampanye media sosial dengan efek mekanik.</p>
                     <div class="work__img">
@@ -199,6 +199,28 @@
     <footer class="footer">
         <p class="footer__copy">&#169; 2026 Nama Kamu. All rights reserved.</p>
     </footer>
+
+    <!-- ========== PROJECT MODAL (POP-UP) ========== -->
+    <div class="modal" id="project-modal">
+        <div class="modal__content">
+            <span class="modal__close" id="modal-close"><i class="fas fa-times"></i></span>
+            
+            <h2 class="modal__title" id="modal-title">Project Title</h2>
+            
+            <div class="modal__img-container">
+                <img src="" alt="Project Detail" id="modal-img" class="modal__img">
+            </div>
+            
+            <div class="modal__body">
+                <p class="modal__desc" id="modal-desc">Detailed description goes here...</p>
+                
+                <h4 class="modal__subtitle">Tools & Technologies Used:</h4>
+                <div class="modal__tags" id="modal-tags">
+                    <!-- Tags akan diisi otomatis oleh JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
