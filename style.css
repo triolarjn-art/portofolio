@@ -143,7 +143,13 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .nav__link:hover::after, .active-link::after { width: 100%; }
 
-.nav__toggle, .nav__close { display: none; cursor: pointer; font-size: 1.5rem; color: var(--title-color); }
+/* Sembunyikan tombol hamburger & X secara default (Desktop) */
+.nav__toggle, .nav__close { 
+    display: none; 
+    cursor: pointer; 
+    font-size: 1.5rem; 
+    color: var(--title-color); 
+}
 
 /* ========== HOME ========== */
 .home__container {
@@ -216,7 +222,7 @@ img { max-width: 100%; height: auto; display: block; }
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.05);
     transition: 0.3s;
-    cursor: pointer; /* Menandakan bisa diklik */
+    cursor: pointer;
 }
 .work__card:hover {
     border-color: var(--accent-color);
@@ -233,7 +239,7 @@ img { max-width: 100%; height: auto; display: block; }
 .work__link { color: var(--accent-color); font-size: 1.2rem; }
 .work__desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
 .work__img { border-radius: 4px; overflow: hidden; }
-.work__img img { transition: 0.5s; }
+.work__img img { transition: 0.5s; width: 100%; height: 200px; object-fit: cover; }
 .work__card:hover .work__img img { transform: scale(1.05); }
 
 /* ========== INFO ========== */
@@ -467,20 +473,11 @@ img { max-width: 100%; height: auto; display: block; }
     border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
-/* Penyesuaian scrollbar di dalam modal */
-.modal__content::-webkit-scrollbar {
-    width: 8px;
-}
-.modal__content::-webkit-scrollbar-track {
-    background: var(--bg-color);
-    border-radius: 8px;
-}
-.modal__content::-webkit-scrollbar-thumb {
-    background: var(--accent-color);
-    border-radius: 8px;
-}
+.modal__content::-webkit-scrollbar { width: 8px; }
+.modal__content::-webkit-scrollbar-track { background: var(--bg-color); border-radius: 8px; }
+.modal__content::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 8px; }
 
-/* ========== RESPONSIVE ========== */
+/* ========== RESPONSIVE (TAMPILAN HP) ========== */
 @media screen and (max-width: 768px) {
     :root {
         --h1-font: 2.5rem;
@@ -499,6 +496,8 @@ img { max-width: 100%; height: auto; display: block; }
     }
     .nav__menu.show-menu { right: 0; }
     .nav__list { flex-direction: column; gap: 2rem; }
+    
+    /* Tampilkan tombol hamburger & X HANYA di HP */
     .nav__toggle, .nav__close { display: block; }
     .nav__close { position: absolute; top: 1rem; right: 1rem; }
 
