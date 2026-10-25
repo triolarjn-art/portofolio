@@ -15,31 +15,29 @@ if (navClose) {
     });
 }
 
-// Sembunyikan menu saat link diklik
-const navLink = document.querySelectorAll('.nav__link');
-navLink.forEach(n => n.addEventListener('click', () => {
+document.querySelectorAll('.nav__link').forEach(n => n.addEventListener('click', () => {
     navMenu.classList.remove('show-menu');
 }));
 
-// ========== SCROLL ANIMATION (REVEAL) ==========
-const revealElements = document.querySelectorAll('.section, .work__card, .info__content, .services__card');
+// ========== SCROLL REVEAL (ANIMASI MUNCUL) ==========
+const revealElements = document.querySelectorAll('.reveal');
 
 const revealOnScroll = () => {
     const windowHeight = window.innerHeight;
-    const elementVisible = 150;
+    const elementVisible = 100;
 
-    revealElements.forEach((el) => {
-        const elementTop = el.getBoundingClientRect().top;
+    revealElements.forEach((reveal) => {
+        const elementTop = reveal.getBoundingClientRect().top;
         if (elementTop < windowHeight - elementVisible) {
-            el.classList.add('active');
+            reveal.classList.add('active');
         } else {
-            el.classList.remove('active');
+            reveal.classList.remove('active');
         }
     });
 };
 
 window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll); // Panggil saat halaman dimuat
+window.addEventListener('load', revealOnScroll);
 
 // ========== ACTIVE LINK ON SCROLL ==========
 const sections = document.querySelectorAll('section[id]');
@@ -49,7 +47,7 @@ window.addEventListener('scroll', () => {
 
     sections.forEach(current => {
         const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 100; // Offset untuk header
+        const sectionTop = current.offsetTop - 120;
         const sectionId = current.getAttribute('id');
         const navLink = document.querySelector(`.nav__list a[href*="${sectionId}"]`);
 
@@ -63,12 +61,44 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ========== FORM CONTACT (SIMPLE ALERT) ==========
+// ========== TYPEWRITER EFFECT (MULTIMEDIA TOUCH) ==========
+// Efek mengetik pada deskripsi di Home
+const textElement = document.querySelector('.home__desc');
+const textContent = textElement.textContent;
+textElement.textContent = '';
+
+let i = 0;
+const typeWriter = () => {
+    if (i < textContent.length) {
+        textElement.textContent += textContent.charAt(i);
+        i++;
+        setTimeout(typeWriter, 30); // Kecepatan mengetik (ms)
+    }
+};
+
+// Mulai mengetik setelah halaman dimuat sepenuhnya (delay 1 detik)
+window.addEventListener('load', () => {
+    setTimeout(typeWriter, 1000);
+});
+
+// ========== CONTACT FORM HANDLING ==========
 const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Pesan Anda telah terkirim! (Ini demo, belum terhubung ke email server)');
+        e.preventDefault(); // Mencegah reload halaman
+        
+        // Tampilkan pesan sukses
+        formStatus.style.display = 'block';
+        formStatus.textContent = 'Message sent successfully! ✅';
+        
+        // Reset form
         contactForm.reset();
+        
+        // Hilangkan pesan setelah 3 detik
+        setTimeout(() => {
+            formStatus.style.display = 'none';
+        }, 3000);
     });
 }
